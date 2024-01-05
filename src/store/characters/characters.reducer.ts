@@ -4,7 +4,7 @@ import {
   fetchCharactersDataFailed,
   fetchCharactersDataStart,
   fetchCharactersDataSuccess,
-} from "./characters.action.ts";
+} from "./characters.action";
 
 export type CharactersState = {
   readonly charactersInfo: CharacterData[];

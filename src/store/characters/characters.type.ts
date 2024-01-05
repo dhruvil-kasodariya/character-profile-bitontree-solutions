@@ -14,10 +14,7 @@ export type CharacterLocation = {
   url: string;
 };
 
-export type Episode = {
-  [index: number]: string;
-};
-
+export type Episode =string[];
 export type CharacterData = {
   id: number;
   name: string;
@@ -28,7 +25,7 @@ export type CharacterData = {
   origin: CharacterOrigin;
   location: CharacterLocation;
   image: string;
-  episode: Episode;
+  episode: Episode[];
   url: string;
   created: string;
 };

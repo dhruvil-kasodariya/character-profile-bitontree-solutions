@@ -3,11 +3,11 @@ import {
   withMatcher,
   Action,
   ActionWithPayload,
-} from "../../utils/reducer/reducer.utils.ts";
+} from "../../utils/reducer/reducer.utils";
 import {
   CHARACTERS_ACTION_TYPES,
   CharactersDataResponse,
-} from "./characters.type.ts";
+} from "./characters.type";
 
 export type FetchCharactersDataStart =
   Action<CHARACTERS_ACTION_TYPES.FETCH_CHARACTERS_DATA_START>;

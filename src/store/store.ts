@@ -6,7 +6,7 @@ import {
   Dispatch,
 } from "redux";
 import logger from "redux-logger";
-import { rootReducers } from "./root.reducer.ts";
+import { rootReducers } from "./root.reducer";
 
 export type RootState = ReturnType<typeof rootReducers>;
 
