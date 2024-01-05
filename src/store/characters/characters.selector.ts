@@ -13,3 +13,8 @@ export const selectResponseInfo = createSelector(
     [selectCharactersReducer],
     (charactersSlice) => charactersSlice.responseInfo
 )
+
+export const selectPaginationInfo =createSelector(
+    [selectCharactersReducer],
+    (charactersSlice) => charactersSlice.pagination
+)

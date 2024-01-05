@@ -22,6 +22,21 @@ export type FetchCharactersDataFailed = ActionWithPayload<
   Error
 >;
 
+export type ChangePageNumber = ActionWithPayload<
+  CHARACTERS_ACTION_TYPES.CHANGE_PAGE_NUMBER,
+  number
+>;
+
+export type ChangeSubPageNumber = ActionWithPayload<
+  CHARACTERS_ACTION_TYPES.CHANGE_SUB_PAGE_NUMBER,
+  number
+>;
+
+export type ChangeSubPagePerCount = ActionWithPayload<
+  CHARACTERS_ACTION_TYPES.CHANGE_SUB_PAGE_PER_COUNT,
+  number
+>;
+
 export const fetchCharactersDataStart = withMatcher(
   (): FetchCharactersDataStart =>
     createAction(CHARACTERS_ACTION_TYPES.FETCH_CHARACTERS_DATA_START)
@@ -38,4 +53,19 @@ export const fetchCharactersDataSuccess = withMatcher(
 export const fetchCharactersDataFailed = withMatcher(
   (error: Error): FetchCharactersDataFailed =>
     createAction(CHARACTERS_ACTION_TYPES.FETCH_CHARACTERS_DATA_FAILED, error)
+);
+
+export const changePageNumber= withMatcher(
+  (count: number): ChangePageNumber =>
+    createAction(CHARACTERS_ACTION_TYPES.CHANGE_PAGE_NUMBER, count)
+);
+
+export const changeSubPageNumber= withMatcher(
+  (count: number): ChangeSubPageNumber =>
+    createAction(CHARACTERS_ACTION_TYPES.CHANGE_SUB_PAGE_NUMBER, count)
+);
+
+export const changeSubPagePerCount= withMatcher(
+  (count: number): ChangeSubPagePerCount =>
+    createAction(CHARACTERS_ACTION_TYPES.CHANGE_SUB_PAGE_PER_COUNT, count)
 );

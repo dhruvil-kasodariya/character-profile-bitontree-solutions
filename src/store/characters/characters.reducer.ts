@@ -1,16 +1,20 @@
 import { UnknownAction } from "redux";
-import { CharacterData, ResponseInfo } from "./characters.type";
+import { CharacterData, PaginationInfo, ResponseInfo } from "./characters.type";
 import {
+  changePageNumber,
+  changeSubPagePerCount,
+  changeSubPageNumber,
   fetchCharactersDataFailed,
   fetchCharactersDataStart,
   fetchCharactersDataSuccess,
 } from "./characters.action";
 
 export type CharactersState = {
-  readonly charactersInfo: CharacterData[];
-  readonly responseInfo: ResponseInfo;
-  readonly isLoading: boolean;
-  readonly error: Error | null;
+  charactersInfo: CharacterData[];
+  responseInfo: ResponseInfo;
+  isLoading: boolean;
+  error: Error | null;
+  pagination: PaginationInfo;
 };
 
 const INITIAL_STATE: CharactersState = {
@@ -23,6 +27,11 @@ const INITIAL_STATE: CharactersState = {
   },
   isLoading: false,
   error: null,
+  pagination: {
+    pageNumber: 1,
+    subPageNumber: 1,
+    subPagePerCount: 10,
+  },
 };
 
 export const charactersReducer = (
@@ -42,6 +51,33 @@ export const charactersReducer = (
   }
   if (fetchCharactersDataFailed.match(action)) {
     return { ...state, error: action.payload, isLoading: false };
+  }
+  if (changePageNumber.match(action)) {
+    return {
+      ...state,
+      pagination: {
+        ...state.pagination,
+        pageNumber: action.payload,
+      },
+    };
+  }
+  if (changeSubPageNumber.match(action)) {
+    return {
+      ...state,
+      pagination: {
+        ...state.pagination,
+        subPageNumber: action.payload,
+      },
+    };
+  }
+  if (changeSubPagePerCount.match(action)) {
+    return {
+      ...state,
+      pagination: {
+        ...state.pagination,
+        subPagePerCount: action.payload,
+      },
+    };
   }
 
   return state;
