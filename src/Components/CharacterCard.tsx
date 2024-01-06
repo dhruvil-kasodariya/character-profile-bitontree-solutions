@@ -21,7 +21,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ characterData }) => {
   return (
     <Fragment>
     <div className="group relative overflow-hidden rounded-lg border border-black/50">
-      <img src={characterData.image} className="rounded-lg object-cover group-hover:blur border w-full"/>
+      <img src={characterData.image} alt={characterData.name} className="rounded-lg object-cover group-hover:blur border w-full"/>
       <div className="absolute bg-white/30 md:-bottom-60 group-hover:bottom-0 bottom-0 w-full transition-all px-2 " >
         <h1 className="w-full text-xl font-bold text-center py-1">
           {characterData.name}

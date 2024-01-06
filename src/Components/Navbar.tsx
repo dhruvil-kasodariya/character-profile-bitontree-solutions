@@ -15,8 +15,6 @@ import { useLocation } from "react-router-dom";
 const Navbar: React.FC = () => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-
-  const searchString = useSelector(selectSearchString);
   const searchType = useSelector(selectSearchType);
 
   const serachTypeOption = [

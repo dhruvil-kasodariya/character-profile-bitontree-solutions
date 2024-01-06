@@ -6,6 +6,8 @@ type CharacterViewProps  ={
   }
   
   const CharacterView: React.FC<CharacterViewProps> = ({ data }) => {
+
+  
   return (
     <div>
       <div className="w-full h-screen p-5 flex flex-row items-center justify-between">
@@ -61,13 +63,18 @@ type CharacterViewProps  ={
             <h1 className="font-bold text-xl">
               Feacher Episodes list of Character
             </h1>
+            <div className="grid grid-cols-5">
             {data?.episode.map((url, index:number) => {
+              let epiNumer =url.toString().split("/");
+              let num =epiNumer[epiNumer.length-1]
               return (
-                <div key={index} className="w-full break-all pl-10 my-4">
-                  <a className="underline text-lg">{url}</a>
+                
+                <div key={index} className=" pl-10 my-4 ">
+                  <a href={url.toString()} className="underline text-lg border border-black p-2 rounded-full hover:bg-[gray]">{num}</a>
                 </div>
               );
             })}
+            </div>
           </div>
         </div>
       </div>

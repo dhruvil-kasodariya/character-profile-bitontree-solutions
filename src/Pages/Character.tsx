@@ -9,20 +9,6 @@ import {
 import CharacterView from "../Components/CharacterView";
 import Navbar from "../Components/Navbar";
 
-interface CharacterData {
-  image: string;
-  name: string;
-  species: string;
-  gender: string;
-  status: string;
-  origin: {
-    url: string;
-    name: string;
-  };
-  type?: string;
-  episode: string[];
-}
-
 const Character: React.FC = () => {
   const dispatch = useDispatch();
   const { id } = useParams<{ id: string }>();
@@ -33,7 +19,7 @@ const Character: React.FC = () => {
 
   useEffect(() => {
     getSingleCharacter(apiUrl, dispatch);
-  }, []);
+  }, [apiUrl,dispatch]);
   return (
     <Fragment>
       <Navbar />
