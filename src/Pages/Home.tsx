@@ -39,7 +39,7 @@ const Home = () => {
   return (
     <Fragment>
       <Navbar />
-      {!isLoading && charactesData ? (
+      {!isLoading && (charactesData ? (
         <div className="w-full">
           <div className="m-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 py-2">
@@ -66,7 +66,7 @@ const Home = () => {
         <h1 className="w-full h-screen flex items-center justify-center text-3xl font-bold">
           Data Not Found : 404
         </h1>
-      )}
+      ))}
     </Fragment>
   );
 };

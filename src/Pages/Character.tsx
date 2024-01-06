@@ -23,13 +23,13 @@ const Character: React.FC = () => {
   return (
     <Fragment>
       <Navbar />
-      {!isLoading && characterData ? (
+      {!isLoading && (characterData ? (
         <CharacterView data={characterData}/>
       ) : (
         <h1 className="w-full h-screen flex items-center justify-center text-3xl font-bold">
           Data Not Found : 404
         </h1>
-      )}
+      ))}
     </Fragment>
   );
 };
