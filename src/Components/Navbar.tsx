@@ -2,7 +2,6 @@ import React, { Fragment, ChangeEvent } from "react";
 import SelectMenu from "./SelctedMenu";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  selectSearchString,
   selectSearchType,
 } from "../store/characters/characters.selector";
 import {

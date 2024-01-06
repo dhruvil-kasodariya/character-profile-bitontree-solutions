@@ -19,7 +19,8 @@ const Home = () => {
   const isLoading = useSelector(selectIsLoading);
   const { pageNumber, subPageNumber, subPagePerCount } =
     useSelector(selectPaginationInfo);
-
+  
+    const apiUrl ="https://rickandmortyapi.com/api/character"
   let totalSubPages: number = 1;
 
   if (charactesData)
@@ -33,8 +34,8 @@ const Home = () => {
     );
 
   useEffect(() => {
-    getCharacters("https://rickandmortyapi.com/api/character", dispatch);
-  }, []);
+    getCharacters(apiUrl, dispatch);
+  }, [apiUrl,dispatch]);
   return (
     <Fragment>
       <Navbar />
