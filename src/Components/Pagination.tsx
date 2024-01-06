@@ -74,7 +74,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
   };
 
   return (
-    <div className="mt-4">
+    <div className="">
     <ul className="flex space-x-2">
       <li
         className={`${

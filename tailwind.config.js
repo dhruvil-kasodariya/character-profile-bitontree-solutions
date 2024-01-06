@@ -6,6 +6,9 @@ module.exports = {
   theme: {
     extend: {},
   },
+  xperimental: {
+    extendScrollbar: true,
+  },
   plugins: [],
 }
 

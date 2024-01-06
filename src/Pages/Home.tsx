@@ -1,103 +1,72 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getCharacters } from "../Api/api";
 import {
   selectCharactersInfo,
+  selectIsLoading,
   selectPaginationInfo,
   selectResponseInfo,
 } from "../store/characters/characters.selector";
 import CharacterCard, { CharacterDataProp } from "../Components/CharacterCard";
-import Pagination from "../Components/Pagination";
-import { changeSubPageNumber, changeSubPagePerCount } from "../store/characters/characters.action";
-import SelectMenu from "../Components/SelctedMenu";
+import Navbar from "../Components/Navbar";
+import PaginationMain from "../Components/PaginationMain";
 
 const Home = () => {
   const dispatch = useDispatch();
   const charactesData = useSelector(selectCharactersInfo);
   const responseInfo = useSelector(selectResponseInfo);
-
-  const getNextCharactesData = () => {
-    responseInfo.next && getCharacters(responseInfo.next, dispatch);
-  };
-
-  const getPrevCharactesData = () => {
-    responseInfo.prev && getCharacters(responseInfo.prev, dispatch);
-  };
-
+  const isLoading = useSelector(selectIsLoading);
   const { pageNumber, subPageNumber, subPagePerCount } =
     useSelector(selectPaginationInfo);
 
-  const totalSubPages: number = charactesData.length / subPagePerCount;
+  let totalSubPages: number = 1;
 
-  const handlePageChange = (pageNumber: number) => {
-    dispatch(changeSubPageNumber(pageNumber));
-  };
+  if (charactesData)
+    totalSubPages = Math.floor(charactesData.length / subPagePerCount);
 
-  const charactesSliceData = charactesData.slice(
-    subPageNumber * subPagePerCount - subPagePerCount,
-    subPagePerCount * subPageNumber
-  );
-
-  const subPagePerCountOption =[
-    {id:1,lable:4,value:4},
-    {id:2,lable:5,value:5},
-    {id:3,lable:10,value:10},
-    {id:4,lable:20,value:20},
-  ]
-
-  const handleSelect = (value: number) => {
-    dispatch(changeSubPagePerCount(value));
-  };
+  let charactesSliceData;
+  if (charactesData)
+    charactesSliceData = charactesData.slice(
+      subPageNumber * subPagePerCount - subPagePerCount,
+      subPagePerCount * subPageNumber
+    );
 
   useEffect(() => {
     getCharacters("https://rickandmortyapi.com/api/character", dispatch);
   }, []);
   return (
-    <div className="w-full">
-      <div className="m-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 py-2">
-          {charactesSliceData.map((data, index) => (
-            <CharacterCard
-              key={index}
-              characterData={data as CharacterDataProp}
-            />
-          ))}
+    <Fragment>
+      <Navbar />
+      {!isLoading && charactesData ? (
+        <div className="w-full">
+          <div className="m-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 py-2">
+              {charactesSliceData &&
+                charactesSliceData.map((data, index) => (
+                  <Link
+                    key={index}
+                    to={`/characters/view-character/${data.id}`}
+                  >
+                    <CharacterCard characterData={data as CharacterDataProp} />
+                  </Link>
+                ))}
+            </div>
+          </div>
+          <PaginationMain
+            responseInfo={responseInfo}
+            pageNumber={pageNumber}
+            subPageNumber={subPageNumber}
+            subPagePerCount={subPagePerCount}
+            totalSubPages={totalSubPages}
+          />
         </div>
-      </div>
-      <div className="w-full flex justify-around items-center ">
-        <div >
-          <SelectMenu onSelect={handleSelect} options ={subPagePerCountOption}/>
-        </div>
-        <div>
-        <Pagination
-          currentPage={subPageNumber}
-          totalPages={totalSubPages}
-          onPageChange={handlePageChange}
-        />
-        </div>
-        <div>
-          {subPageNumber} of {totalSubPages}
-        </div>
-      </div>
-      <div className="flex flex-row items-center justify-between mx-48">
-        <button
-          onClick={getPrevCharactesData}
-          className="border border-blue-700 px-8 py-2 rounded-xl text-[gray]"
-        >
-          Prev
-        </button>
-        <div>
-           
-        </div>
-        <button
-          onClick={getNextCharactesData}
-          className="border border-blue-700 px-8 py-2 rounded-xl text-[gray]"
-        >
-          Next
-        </button>
-
-      </div>
-    </div>
+      ) : (
+        <h1 className="w-full h-screen flex items-center justify-center text-3xl font-bold">
+          Data Not Found : 404
+        </h1>
+      )}
+    </Fragment>
   );
 };
 

@@ -18,3 +18,24 @@ export const selectPaginationInfo =createSelector(
     [selectCharactersReducer],
     (charactersSlice) => charactersSlice.pagination
 )
+
+export const selectSingleCharacterInfo = createSelector(
+    [selectCharactersReducer],
+    (charactersSlice) => charactersSlice.singleCharacterInfo
+)
+
+export const selectIsLoading = createSelector(
+    [selectCharactersReducer],
+    (charactersSlice) => charactersSlice.isLoading
+)
+
+export const selectSearchString = createSelector(
+    [selectCharactersReducer],
+    (charactersSlice) => charactersSlice.searchString
+)
+
+export const selectSearchType = createSelector(
+    [selectCharactersReducer],
+    (charactersSlice) => charactersSlice.searchType
+)
+

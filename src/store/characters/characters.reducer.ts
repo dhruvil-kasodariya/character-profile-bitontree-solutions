@@ -7,14 +7,22 @@ import {
   fetchCharactersDataFailed,
   fetchCharactersDataStart,
   fetchCharactersDataSuccess,
+  fetchSingleCharacterDataSuccess,
+  fetchSingleCharacterDataStart,
+  fetchSingleCharacterDataFailed,
+  searchStringAction,
+  searchTypeAction,
 } from "./characters.action";
 
 export type CharactersState = {
-  charactersInfo: CharacterData[];
+  charactersInfo?: CharacterData[]|null;
   responseInfo: ResponseInfo;
   isLoading: boolean;
   error: Error | null;
   pagination: PaginationInfo;
+  singleCharacterInfo:CharacterData | null;
+  searchString:string;
+  searchType:string
 };
 
 const INITIAL_STATE: CharactersState = {
@@ -32,13 +40,16 @@ const INITIAL_STATE: CharactersState = {
     subPageNumber: 1,
     subPagePerCount: 10,
   },
+  singleCharacterInfo:null,
+  searchString:"",
+  searchType:""
 };
 
 export const charactersReducer = (
   state = INITIAL_STATE,
   action: UnknownAction
 ): CharactersState => {
-  if (fetchCharactersDataStart.match(action)) {
+  if (fetchCharactersDataStart.match(action) || fetchSingleCharacterDataStart.match(action)) {
     return { ...state, isLoading: true };
   }
   if (fetchCharactersDataSuccess.match(action)) {
@@ -50,7 +61,7 @@ export const charactersReducer = (
     };
   }
   if (fetchCharactersDataFailed.match(action)) {
-    return { ...state, error: action.payload, isLoading: false };
+    return { ...state, error: action.payload, isLoading: false ,charactersInfo:null};
   }
   if (changePageNumber.match(action)) {
     return {
@@ -79,6 +90,23 @@ export const charactersReducer = (
       },
     };
   }
-
+  if(fetchSingleCharacterDataSuccess.match(action)) {
+    return {
+      ...state,singleCharacterInfo:action.payload,isLoading:false
+    }
+  }
+  if ( fetchSingleCharacterDataFailed.match(action)) {
+    return { ...state, error: action.payload, isLoading: false ,singleCharacterInfo:null};
+  }
+  if(searchStringAction.match(action)){
+    return {
+      ...state,searchString:action.payload
+    }
+  }
+  if(searchTypeAction.match(action)){
+    return {
+      ...state,searchType:action.payload
+    }
+  }
   return state;
 };

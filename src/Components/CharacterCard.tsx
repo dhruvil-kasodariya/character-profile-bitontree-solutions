@@ -28,16 +28,16 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ characterData }) => {
         </h1>
         {characterData.type && (
           <div className="flex flex-row items-center justify-start py-1">
-            <h2 className="font-semibold text-lg w-[7rem]">Type :</h2>
+            <h2 className="font-semibold text-lg w-[7rem]">Type </h2>
             <span>{characterData.type}</span>
           </div>
         )}
         <div className="flex flex-row items-center justify-start py-1">
-          <h2 className="font-semibold text-lg w-[7rem]">Location :</h2>
+          <h2 className="font-semibold text-lg w-[7rem]">Location </h2>
           <span className="text-base">{characterData.location.name}</span>
         </div>
         <div className="flex flex-row items-center justify-start py-1">
-          <h2 className="font-semibold text-lg w-[7rem]">Total Episodes :</h2>
+          <h2 className="font-semibold text-lg w-[7rem]">Total Episodes </h2>
           <span className="text-base">{totalEpisodes}</span>
         </div>
       </div>

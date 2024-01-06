@@ -1,10 +1,19 @@
-
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Home from "./Pages/Home.tsx";
+import Character from "./Pages/Character.tsx"
 
 function App() {
   return (
-    <div className="h-screen flex justify-center items-center">
-      <h1 className='text-[gray]'>Hello <br/><span className='text-[rgba(59,130,246,.5);]'>Bitontree</span> Solution</h1>
+    <div>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/characters" element={<Home />}/>
+        {/* <Route path={["/","/characters"]} element={<Home />}/> */}
+        <Route path="/characters/view-character/:id" element={<Character />}/>
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }
