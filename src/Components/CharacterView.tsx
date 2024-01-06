@@ -10,7 +10,7 @@ type CharacterViewProps  ={
   
   return (
     <div>
-      <div className="w-full h-screen p-5 flex flex-row items-center justify-between">
+      <div className="w-full h-screen p-5 flex flex-col md:flex-row items-center justify-between">
         <div className="w-full h-screen flex items-center justify-center">
           <img
             src={data?.image}
@@ -18,7 +18,7 @@ type CharacterViewProps  ={
             alt={data?.name}
           />
         </div>
-        <div className="w-full h-screen flex flex-col items-center overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 mt-24">
+        <div className="w-full h-screen flex flex-col items-center md:overflow-y-scroll md:scrollbar-thin md:scrollbar-thumb-gray-300 md:scrollbar-track-gray-100 md:mt-24 mt-5">
           <div className="w-full flex flex-row text-center py-4 px-2 mb-2">
             <h1 className="w-full font-bold text-3xl">{data?.name}</h1>
           </div>
