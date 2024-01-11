@@ -39,3 +39,4 @@ export const selectSearchType = createSelector(
     (charactersSlice) => charactersSlice.searchType
 )
 
+

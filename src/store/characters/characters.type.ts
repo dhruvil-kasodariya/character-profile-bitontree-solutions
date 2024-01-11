@@ -1,3 +1,5 @@
+import { EpisodeData } from "../episodes/episodes.type";
+
 export enum CHARACTERS_ACTION_TYPES {
   FETCH_CHARACTERS_DATA_START = "characters/FETCH_CHARACTERS_DATA_START",
   FETCH_CHARACTERS_DATA_SUCCESS = "characters/FETCH_CHARACTERS_DATA_SUCCESS",
@@ -9,7 +11,7 @@ export enum CHARACTERS_ACTION_TYPES {
   FETCH_SINGLE_CHARACTER_DATA_SUCCESS = "characters/FETCH_SINGLE_CHARACTER_DATA_SUCCESS",
   FETCH_SINGLE_CHARACTER_DATA_FAILED = "characters/FETCH_SINGLE_CHARACTER_DATA_FAILED",
   SEARCH_STRING ="characters/SEARCH_STRING",
-  SEARCH_TYPE ="characters/SEARCH_TYPE"
+  SEARCH_TYPE ="characters/SEARCH_TYPE",
 }
 
 export type CharacterOrigin = {
@@ -33,7 +35,7 @@ export type CharacterData = {
   origin: CharacterOrigin;
   location: CharacterLocation;
   image: string;
-  episode: Episode[];
+  episode: EpisodeData[];
   url: string;
   created: string;
 };

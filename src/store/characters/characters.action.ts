@@ -122,3 +122,4 @@ export const searchTypeAction =withMatcher(
   (value:string):SearchType =>
     createAction(CHARACTERS_ACTION_TYPES.SEARCH_TYPE,value) 
 )
+;

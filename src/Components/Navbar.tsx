@@ -1,15 +1,13 @@
 import React, { Fragment, ChangeEvent } from "react";
 import SelectMenu from "./SelctedMenu";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectSearchType,
-} from "../store/characters/characters.selector";
+import { selectSearchType } from "../store/characters/characters.selector";
 import {
   searchStringAction,
   searchTypeAction,
 } from "../store/characters/characters.action";
 import { getCharacters } from "../Api/api";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const dispatch = useDispatch();
@@ -36,13 +34,13 @@ const Navbar: React.FC = () => {
       getCharacters(filterApiUrl, dispatch);
     }, 2000);
   };
-  console.log(pathname);
-
   return (
     <Fragment>
       <div className="w-full">
         <div className="m-4 flex flex-row items-center justify-between">
-          <div className="w-full px-2 text-xl font-bold">Rick & Morty</div>
+          <Link to="/">
+            <div className="w-full px-2 text-xl font-bold">Rick & Morty</div>
+          </Link>
           {(pathname === "/" || pathname === "/characters") && (
             <div className="flex px-2 md:flex-row flex-col items-center justify-between gap-5 ">
               <div className="flex items-center justify-end h-full w-full ">

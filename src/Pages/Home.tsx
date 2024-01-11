@@ -33,7 +33,7 @@ const Home = () => {
       subPagePerCount * subPageNumber
     );
 
-  useEffect(() => {
+  useEffect(() => {   
     getCharacters(apiUrl, dispatch);
   }, [apiUrl,dispatch]);
   return (

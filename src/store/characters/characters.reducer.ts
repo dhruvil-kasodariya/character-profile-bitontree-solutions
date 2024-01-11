@@ -22,7 +22,7 @@ export type CharactersState = {
   pagination: PaginationInfo;
   singleCharacterInfo:CharacterData | null;
   searchString:string;
-  searchType:string
+  searchType:string;
 };
 
 const INITIAL_STATE: CharactersState = {
@@ -42,7 +42,7 @@ const INITIAL_STATE: CharactersState = {
   },
   singleCharacterInfo:null,
   searchString:"",
-  searchType:""
+  searchType:"",
 };
 
 export const charactersReducer = (

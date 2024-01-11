@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Episode } from "../store/characters/characters.type";
+import { EpisodeData } from "../store/episodes/episodes.type";
 
 export type CharacterDataProp = {
   image: string;
@@ -8,7 +9,7 @@ export type CharacterDataProp = {
   location: {
     name: string;
   };
-  episode: Episode[];
+  episode: EpisodeData[];
 };
 
 export type CharacterCardProps = {
