@@ -52,9 +52,6 @@ const CharacterView: React.FC<CharacterViewProps> = ({ data }) => {
             >
               {data?.origin.name}
             </span>
-            {/* <a className="w-full text-lg text-start" href={data?.origin.url}>
-              {data?.origin.name}
-            </a> */}
           </div>
           {data?.type && (
             <div className="w-full py-4 px-2 mb-2 flex flex-row gap-8">
@@ -66,7 +63,7 @@ const CharacterView: React.FC<CharacterViewProps> = ({ data }) => {
             <h1 className="font-bold text-xl">
               Feacher Episodes list of Character
             </h1>
-            <div className="grid grid-cols-5">
+            <div className="grid grid-cols-3  lg:grid-cols-4 xl:grid-cols-5">
               {data?.episode.map((epiInfo, index: number) => (
                 <div key={index} className=" pl-10 my-4 ">
                   <span
