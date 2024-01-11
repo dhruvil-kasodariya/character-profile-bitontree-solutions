@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import { Episode } from "../store/characters/characters.type";
 import { EpisodeData } from "../store/episodes/episodes.type";
 
 export type CharacterDataProp = {
